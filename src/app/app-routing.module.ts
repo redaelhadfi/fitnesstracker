@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'workout', component: WorkoutComponent },
   { path: 'meals', component: MealsComponent },
   { path: 'progress', component: ProgressComponent },
-  { path: 'login', component: LoginComponent }, // Route for login
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route to login
-  { path: '**', redirectTo: '/login', pathMatch: 'full' } // Wildcard route
+  { path: 'login', component: LoginComponent }, // Login route
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
+  { path: '**', redirectTo: '/login', pathMatch: 'full' } // Wildcard route for unmatched paths
 ];
 
 @NgModule({

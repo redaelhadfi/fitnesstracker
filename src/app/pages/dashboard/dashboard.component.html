@@ -1,0 +1,96 @@
+<div *ngIf="isLoading" class="flex justify-center items-center h-screen">
+    <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-blue-500" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  
+  <div *ngIf="!isLoading" class="container mx-auto p-8 space-y-8 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-semibold text-center text-blue-600 mb-6">Fitness Dashboard</h1>
+  
+    <!-- Today's Summary Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="bg-gray-50 p-6 rounded-md shadow-sm hover:shadow-md transition duration-300">
+        <div class="flex items-center space-x-3">
+          <span class="material-icons text-blue-500 text-3xl">local_fire_department</span>
+          <div>
+            <p class="text-sm font-medium text-gray-500">Total Calories Today</p>
+            <p class="text-lg font-semibold text-blue-600">{{ totalCaloriesToday }} kcal</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="bg-gray-50 p-6 rounded-md shadow-sm hover:shadow-md transition duration-300">
+        <div class="flex items-center space-x-3">
+          <span class="material-icons text-blue-500 text-3xl">fitness_center</span>
+          <div>
+            <p class="text-sm font-medium text-gray-500">Protein Today</p>
+            <p class="text-lg font-semibold text-blue-600">{{ proteinIntakeToday }} g</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="bg-gray-50 p-6 rounded-md shadow-sm hover:shadow-md transition duration-300">
+        <div class="flex items-center space-x-3">
+          <span class="material-icons text-blue-500 text-3xl">lunch_dining</span>
+          <div>
+            <p class="text-sm font-medium text-gray-500">Fat Today</p>
+            <p class="text-lg font-semibold text-blue-600">{{ fatIntakeToday }} g</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="bg-gray-50 p-6 rounded-md shadow-sm hover:shadow-md transition duration-300">
+        <div class="flex items-center space-x-3">
+          <span class="material-icons text-blue-500 text-3xl">grain</span>
+          <div>
+            <p class="text-sm font-medium text-gray-500">Carbs Today</p>
+            <p class="text-lg font-semibold text-blue-600">{{ carbsIntakeToday }} g</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Graphs Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Meal Type Distribution Pie Chart -->
+      <div class="bg-gray-50 p-6 rounded-md shadow-sm transition duration-300">
+        <div class="flex items-center space-x-2 mb-4 border-b pb-2 border-blue-500">
+          <h2 class="text-md font-semibold text-blue-600">Meal Type Distribution</h2>
+        </div>
+        <apx-chart 
+          [series]="mealTypeDistributionChart.series" 
+          [chart]="mealTypeDistributionChart.chart" 
+          [labels]="mealTypeDistributionChart.labels" 
+          [colors]="mealTypeDistributionChart.colors">
+        </apx-chart>
+      </div>
+  
+      <!-- Daily Caloric Intake Line Chart -->
+      <div class="bg-gray-50 p-6 rounded-md shadow-sm transition duration-300">
+        <div class="flex items-center space-x-2 mb-4 border-b pb-2 border-blue-500">
+          <h2 class="text-md font-semibold text-blue-600">Daily Caloric Intake</h2>
+        </div>
+        <apx-chart 
+          [series]="dailyCaloriesChart.series" 
+          [chart]="dailyCaloriesChart.chart" 
+          [xaxis]="dailyCaloriesChart.xaxis" 
+          [stroke]="dailyCaloriesChart.stroke" 
+          [colors]="dailyCaloriesChart.colors">
+        </apx-chart>
+      </div>
+  
+      <!-- Weekly Macronutrients Intake Stacked Bar Chart -->
+      <div class="lg:col-span-2 bg-gray-50 p-6 rounded-md shadow-sm transition duration-300">
+        <div class="flex items-center space-x-2 mb-4 border-b pb-2 border-blue-500">
+          <h2 class="text-md font-semibold text-blue-600">Weekly Macronutrients Intake</h2>
+        </div>
+        <apx-chart 
+          [series]="macrosChart.series" 
+          [chart]="macrosChart.chart" 
+          [xaxis]="macrosChart.xaxis" 
+          [colors]="macrosChart.colors">
+        </apx-chart>
+      </div>
+    </div>
+  </div>
+  
