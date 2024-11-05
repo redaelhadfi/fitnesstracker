@@ -1,0 +1,21 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+<nav class="bg-blue-700 text-white px-4 py-3 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <a routerLink="/dashboard" class="text-2xl font-semibold">FitnessApp</a>
+      
+      <!-- Navigation Links -->
+      <ul class="flex space-x-6">
+        <li><a routerLink="/dashboard" routerLinkActive="font-bold" class="hover:underline">Dashboard</a></li>
+        <li><a routerLink="/workout" routerLinkActive="font-bold" class="hover:underline">Workout</a></li>
+        <li><a routerLink="/meals" routerLinkActive="font-bold" class="hover:underline">Meals</a></li>
+        <li><a routerLink="/progress" routerLinkActive="font-bold" class="hover:underline">Progress</a></li>
+        <li><a routerLink="/profile" routerLinkActive="font-bold" class="hover:underline">Profile</a></li>
+      </ul>
+  
+      <!-- Logout Button -->
+      <button (click)="logout()" class="bg-white text-blue-700 px-4 py-2 rounded-md font-semibold hover:bg-blue-600 hover:text-white transition">
+        Logout
+      </button>
+    </div>
+  </nav>
+  

@@ -1,6 +1,17 @@
-<h2>Workout</h2>
-<ul>
-  <li *ngFor="let workout of workouts">
- aaaa
-  </li>
-</ul>
+<!-- src/app/pages/workout/workout.component.html -->
+<div class="container mx-auto p-8 space-y-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div *ngFor="let workout of workouts" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 border-l-4 border-blue-600">
+      <div class="flex items-center mb-4">
+        <span class="material-icons text-blue-600 text-4xl mr-2">fitness_center</span>
+        <h2 class="text-xl font-semibold text-blue-600">{{ workout.name }}</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-2"><span class="font-bold">Level:</span> {{ workout.level }} | <span class="font-bold">Duration:</span> {{ workout.duration }}</p>
+      <p class="text-gray-700 mb-4">{{ workout.description }}</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li *ngFor="let exercise of workout.exercises" class="text-gray-600">{{ exercise }}</li>
+      </ul>
+      <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition">Start Workout</button>
+    </div>
+  </div>
+</div>
