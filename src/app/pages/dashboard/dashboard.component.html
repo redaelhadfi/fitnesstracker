@@ -5,7 +5,7 @@
   </div>
   
   <div *ngIf="!isLoading" class="container mx-auto p-8 space-y-8 bg-white rounded-lg shadow-lg">
-    <h1 class="text-3xl font-semibold text-center text-blue-600 mb-6">Fitness Dashboard</h1>
+    <h1 class="text-2xl     font-semibold text-center text-blue-600 mb-6">Fitness Dashboard</h1>
   
     <!-- Today's Summary Cards -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -24,7 +24,7 @@
           <span class="material-icons text-blue-500 text-3xl">fitness_center</span>
           <div>
             <p class="text-sm font-medium text-gray-500">Protein Today</p>
-            <p class="text-lg font-semibold text-blue-600">{{ proteinIntakeToday }} g</p>
+            <p class="text-lg font-semibold text-blue-600">{{ proteinIntakeToday | number:'1.2-2' }} g</p>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
           <span class="material-icons text-blue-500 text-3xl">grain</span>
           <div>
             <p class="text-sm font-medium text-gray-500">Carbs Today</p>
-            <p class="text-lg font-semibold text-blue-600">{{ carbsIntakeToday }} g</p>
+            <p class="text-lg font-semibold text-blue-600">{{ carbsIntakeToday | number:'1.2-2' }} g</p>
           </div>
         </div>
       </div>

@@ -10,15 +10,27 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   username: string | null = null;
+  dropdownOpen = false;
+  loggedIn = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.username = this.authService.getUsernameFromToken();
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus(): void {
+    this.loggedIn = this.authService.isLoggedIn();
+    this.username = this.loggedIn ? this.authService.getUsernameFromToken() : null;
+  }
+
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
   }
 
   logout(): void {
     this.authService.logout();
+    this.loggedIn = false;
     this.router.navigate(['/login']);
   }
 }

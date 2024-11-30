@@ -1,33 +1,28 @@
-<!-- app.component.html -->
-<div class="bg-blue-600 shadow-lg text-white">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <!-- Logo/Title -->
-      <a routerLink="/" class="text-2xl font-bold hover:text-blue-300">MyFitnessApp</a>
-  
-      <!-- Links -->
-      <div class="hidden md:flex space-x-6 items-center">
-        <a routerLink="/dashboard" routerLinkActive="text-blue-300" class="hover:text-blue-300">Dashboard</a>
-        <a routerLink="/meals" routerLinkActive="text-blue-300" class="hover:text-blue-300">Meals</a>
-        <a routerLink="/workout" routerLinkActive="text-blue-300" class="hover:text-blue-300">Workouts</a>
-        <a routerLink="/progress" routerLinkActive="text-blue-300" class="hover:text-blue-300">Progress</a>
+<!-- src/app/app.component.html -->
+<div *ngIf="loggedIn" class="bg-blue-600 shadow-lg text-white">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a routerLink="/" class="text-2xl font-bold hover:text-blue-300">MyFitnessApp</a>
+
+    <div class="hidden md:flex space-x-6 items-center">
+      <a routerLink="/dashboard" routerLinkActive="text-blue-300" class="hover:text-blue-300">Dashboard</a>
+      <a routerLink="/meals" routerLinkActive="text-blue-300" class="hover:text-blue-300">Meals</a>
+      <a routerLink="/workout" routerLinkActive="text-blue-300" class="hover:text-blue-300">Workouts</a>
+      <a routerLink="/progress" routerLinkActive="text-blue-300" class="hover:text-blue-300">Progress</a>
+    </div>
+<app-chatbot></app-chatbot>
+    <div class="relative" (click)="toggleDropdown()">
+      <button class="flex items-center space-x-2 focus:outline-none">
+        <span class="material-icons">account_circle</span>
+        <span>{{ username }}</span>
+      </button>
+      <div *ngIf="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20">
+        <a routerLink="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Profile</a>
+        <a (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">Logout</a>
       </div>
-  
-      <!-- Profile Dropdown -->
-      <div class="relative">
-        <button class="flex items-center space-x-2 focus:outline-none">
-          <span class="material-icons">account_circle</span>
-          <span>{{ username }}</span>
-        </button>
-        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden z-20 hidden group-hover:block">
-          <a routerLink="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Profile</a>
-          <a (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Logout</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-  
-  <!-- Router outlet to display pages -->
-  <div class="mt-8 container mx-auto">
-    <router-outlet></router-outlet>
-  </div>
-  
+    </div>
+  </nav>
+</div>
+
+<div class="mt-8 container mx-auto">
+  <router-outlet></router-outlet>
+</div>

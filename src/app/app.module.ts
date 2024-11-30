@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 
 @NgModule({
   imports: [NgApexchartsModule,
@@ -39,6 +40,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
   ],
   
   declarations: [
+    ChatbotComponent,
     AppComponent,
     DashboardComponent,
     WorkoutComponent,

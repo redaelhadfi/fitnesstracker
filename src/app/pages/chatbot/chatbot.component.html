@@ -1,1 +1,46 @@
-<p>chatbot works!</p>
+<div class="fixed bottom-8 right-8 z-50">
+    <!-- Toggle Button -->
+    <button (click)="toggleChat()" class="p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition">
+      <span *ngIf="!isOpen" class="material-icons">chat</span>
+      <span *ngIf="isOpen" class="material-icons">close</span>
+    </button>
+  
+    <!-- Chat Window -->
+    <div *ngIf="isOpen" class="bg-white rounded-lg shadow-lg w-80 h-96 flex flex-col overflow-hidden mt-4 border border-gray-200 z-50">
+        <div class="bg-blue-600 text-white text-center p-4  rounded-t-lg h-16">
+        <h2 class="text-sm font-semibold  ">Chat </h2>
+      </div>
+  
+      <!-- Messages Area -->
+      <div class="flex-1 p-4 overflow-y-auto space-y-4">
+        <div *ngFor="let msg of messages">
+          <!-- User Message -->
+          <div *ngIf="msg.user" class="text-right">
+            <div class="inline-block bg-blue-500 text-blue-800 rounded-lg p-2 mb-2">
+              {{ msg.user }}
+            </div>
+          </div>
+  
+          <!-- Bot Response -->
+          <div *ngIf="msg.bot" class="text-left">
+            <div class="inline-block bg-gray-100 text-gray-800 rounded-lg p-2 mb-2">
+              {{ msg.bot }}
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+
+      <div class="p-3 border-t border-gray-200 text-cyan-800">
+        <input
+        
+          type="text"
+          [(ngModel)]="userMessage"
+          placeholder="Type a message..."
+          class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-600"
+          (keyup.enter)="sendMessage()"
+        />
+      </div>
+    </div>
+  </div>
+  
